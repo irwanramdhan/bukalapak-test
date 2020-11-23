@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "55a19935-d2ab-4f62-a73e-c3a539d1e19e",
+		"name": "Bukalapak Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get correct data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac2eab81-8f86-4c8c-859e-ff1d680d228a",
+						"exec": [
+							"//pm.test(\"expect dataType of name\", function () {",
+							"//    var jsonData = pm.response.json();",
+							"//    pm.expect(jsonData.name).to.be.a('string');",
+							"//});",
+							"",
+							"pm.test(\"The response has all properties\", () => {    //parse the response json and test three properties   ",
+							"   const responseJson = pm.response.json();     ",
+							"   pm.expect(responseJson[0].title).to.be.a('string');   ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get correct response",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2c5b0952-0d37-4cfc-ab6e-4b23973bc467",
+						"exec": [
+							"pm.test(\"expect correct response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql (101);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "title",
+						"value": "recommendation",
+						"type": "text"
+					},
+					{
+						"key": "body",
+						"value": "motorcycle",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "recommendation",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "body",
+							"value": "motorcylce",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "userId",
+							"value": "12",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
